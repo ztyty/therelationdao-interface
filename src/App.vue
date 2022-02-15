@@ -1,7 +1,12 @@
 <template>
   <div id="app">
     <div class="connect-wallet-box">
-      <a class="btn-connect-wallet" href="javascript:void(0)" v-if="isLogin">
+      <a
+        class="btn-connect-wallet"
+        href="javascript:void(0)"
+        @click="switchShowAccounts(!showAccounts)"
+        v-if="isLogin"
+      >
         {{ loginAddress }}
       </a>
       <a
@@ -17,6 +22,8 @@
       <p>Web3 Social Relationships.</p>
     </div>
     <router-view />
+
+    <accounts v-if="showAccounts"></accounts>
   </div>
 </template>
 
@@ -25,11 +32,15 @@ import { mapState, mapMutations } from "vuex";
 import Web3 from "web3";
 import Web3Modal from "web3modal";
 import WalletConnect from "@walletconnect/web3-provider";
-import config from '@/js/config';
+import config from "@/js/config";
+import Accounts from "@/components/accounts";
 
 export default {
+  components: {
+    Accounts,
+  },
   computed: {
-    ...mapState(["isLogin", "address"]),
+    ...mapState(["isLogin", "address", "showAccounts"]),
     loginAddress() {
       if (!this.isLogin) {
         return "";
@@ -38,7 +49,7 @@ export default {
     },
   },
   methods: {
-    ...mapMutations(["login", "logout"]),
+    ...mapMutations(["login", "logout", "switchShowAccounts"]),
     async connectWallet() {
       const infuraId = process.env.VUE_APP_INFURA_ID;
       let providerOptions = {
@@ -104,8 +115,8 @@ body {
 
   .btn-connect-wallet {
     display: inline-block;
-    padding: 15px;
-    border-radius: 15px;
+    padding: 10px 15px;
+    border-radius: 10px;
     border: 4px solid white;
     color: white;
     font-size: 20px;
@@ -125,7 +136,7 @@ body {
   font-weight: 600;
   color: white;
   text-align: center;
-  line-height: 200px;
+  padding-top: 50px;
 }
 
 .desc {

@@ -9,6 +9,8 @@ export default new Vuex.Store({
     address: null,
     web3: null,
     networkId: null,
+    loginId: null,
+    showAccounts: false,
   },
   mutations: {
     login(state, address, web3, networkId) {
@@ -16,6 +18,12 @@ export default new Vuex.Store({
       state.isLogin = true;
       state.web3 = web3;
       state.networkId = networkId;
+    },
+    switchShowAccounts(state, isShow) {
+      state.showAccounts = isShow;
+    },
+    submitLoginId(state, id) {
+      state.loginId = id;
     },
     switchAddress(state, address) {
       state.address = address;

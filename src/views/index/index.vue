@@ -6,7 +6,7 @@
       <div class="form-item">
         <div class="label">Name*</div>
         <div class="input">
-          <input type="text" v-model="form.name" />
+          <input type="text" v-model="form.name" placeholder="Name" />
         </div>
       </div>
       <div class="form-item">
@@ -35,13 +35,17 @@
       <div class="form-item">
         <div class="label">Introduction*</div>
         <div class="input">
-          <input type="text" v-model="form.introduction" />
+          <textarea
+            v-model="form.introduction"
+            rows="5"
+            placeholder="Introduction"
+          ></textarea>
         </div>
       </div>
       <div class="form-item">
         <div class="label">Twitter</div>
         <div class="input">
-          <input type="text" v-model="form.twitter" />
+          <input type="text" v-model="form.twitter" placeholder="Twitter" />
         </div>
       </div>
       <div class="form-item">
@@ -54,7 +58,7 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState, mapMutations } from "vuex";
 import config from "@/js/config";
 import TheRelationDao from "@/assets/contracts/TheRelationDao.json";
 
@@ -82,6 +86,7 @@ export default {
     },
   },
   methods: {
+    ...mapMutations(["switchShowAccounts"]),
     getWeb3Instance() {
       if (!this.web3Instance) {
         this.web3Instance = new window.AppWeb3.eth.Contract(
@@ -138,6 +143,8 @@ export default {
         this.form.twitter = null;
 
         this.$message.success("success");
+
+        this.switchShowAccounts(true);
       } catch (e) {
         this.loading = false;
         console.log("error", e);
@@ -211,6 +218,7 @@ export default {
       float: left;
 
       input,
+      textarea,
       .btn-upload-image {
         width: 100%;
         height: 60px;
@@ -222,6 +230,11 @@ export default {
         color: white;
         font-size: 20px;
         font-weight: 800;
+      }
+
+      textarea {
+        height: auto;
+        resize: none;
       }
 
       .btn-upload-image {

@@ -4,6 +4,9 @@ const config = {
   ipfs: {
     url: process.env.VUE_APP_IPFS_URL,
   },
+  graph: {
+      url: process.env.VUE_APP_GRAPH_URL
+  }
 };
 
 export default config;
