@@ -17,7 +17,14 @@
         >ConnectWallet</a
       >
     </div>
-    <div class="web-title">TheRelationDAO</div>
+    <div class="web-title">
+      <img
+        @click="goIndex()"
+        src="@/assets/images/logo.png"
+        width="400"
+        height="100"
+      />
+    </div>
     <div class="desc">
       <p>Web3 Social Relationships.</p>
     </div>
@@ -49,7 +56,13 @@ export default {
     },
   },
   methods: {
-    ...mapMutations(["login", "logout", "switchShowAccounts"]),
+    ...mapMutations([
+      "login",
+      "logout",
+      "switchShowAccounts",
+      "switchAddress",
+      "submitLoginId",
+    ]),
     async connectWallet() {
       const infuraId = process.env.VUE_APP_INFURA_ID;
       let providerOptions = {
@@ -69,7 +82,14 @@ export default {
         let provider = await web3Modal.connect();
 
         provider.on("accountsChanged", (accounts) => {
-          console.log(accounts);
+          if (accounts.length === 0) {
+            this.logout();
+          } else {
+            let curAccount = accounts[0];
+            if (curAccount !== this.address) {
+              this.switchAddress(curAccount);
+            }
+          }
         });
         provider.on("disconnect", (err) => {
           this.logout();
@@ -90,6 +110,11 @@ export default {
         this.login(address, web3, networkId);
       } catch (e) {
         this.$message.error(e.message);
+      }
+    },
+    goIndex() {
+      if (this.$route.name !== "Index") {
+        this.$router.push({ name: "Index" });
       }
     },
   },
@@ -137,6 +162,10 @@ body {
   color: white;
   text-align: center;
   padding-top: 50px;
+
+  img {
+    cursor: pointer;
+  }
 }
 
 .desc {

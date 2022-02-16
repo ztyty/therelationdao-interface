@@ -6,7 +6,7 @@
       </div>
 
       <div class="title">
-        <span v-if="loginId !== null">CURRENT RELATION#{{ loginId }}</span>
+        <span v-if="loginId !== null">RELATION#{{ loginId }}</span>
       </div>
       <div class="relations-list">
         <template v-if="relations.length === 0">
@@ -18,9 +18,9 @@
             :class="{ active: loginId === relationItem.id }"
             v-for="relationItem in relations"
             :key="relationItem.id"
-            @click="submitLoginId(relationItem.id)"
+            @click="switchLoginId(relationItem.id)"
           >
-            <div class="relation-id">#{{ relationItem.id }}</div>
+            <div class="relation-id">RELATION#{{ relationItem.id }}</div>
             <div class="relation-info">
               <span class="follow-count">
                 <span class="value">{{ relationItem.followCount }}</span
@@ -60,6 +60,11 @@ export default {
     close() {
       this.switchShowAccounts(false);
     },
+    switchLoginId(id) {
+      this.submitLoginId(id);
+      this.$message.success("switched to RELATION#" + id);
+      this.close();
+    },
   },
   apollo: {
     myRelations: {
@@ -79,7 +84,7 @@ export default {
           }
         }
       `,
-      pollInterval: 1000,
+      pollInterval: 3000,
       manual: true,
       variables() {
         let owner = this.isLogin ? this.address : "0x0";

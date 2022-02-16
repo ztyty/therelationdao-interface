@@ -27,11 +27,13 @@ export default new Vuex.Store({
     },
     switchAddress(state, address) {
       state.address = address;
+      state.loginId = null;
     },
     logout(state) {
       state.isLogin = false;
       state.web3 = null;
       state.networkId = null;
+      state.loginId = null;
     },
   },
   actions: {},

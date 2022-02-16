@@ -13,10 +13,18 @@ const routes = [
       title: "TheRelationDAO",
     },
   },
+  {
+    path: "/a/:id",
+    name: "AccountDetail",
+    component: () => import("@/views/account/detail.vue"),
+    meta: {
+      title: "Profile",
+    },
+  },
 ];
 
 const router = new VueRouter({
-  mode: "history",
+//   mode: "history",
   routes,
 });
 

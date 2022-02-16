@@ -127,10 +127,12 @@ export default {
       let uploadRes = null;
       try {
         uploadRes = await this.$ipfs.add(data);
+        let profileHash = "ipfs://" + uploadRes.path;
+        console.log(profileHash);
 
         // save ethereum
         await this.getWeb3Instance()
-          .methods.mint(uploadRes.path)
+          .methods.mint(profileHash)
           .send({
             from: this.address,
           });
@@ -183,7 +185,7 @@ export default {
   height: auto;
   float: left;
   text-align: center;
-  padding-top: 100px;
+  padding-top: 30px;
   padding-bottom: 100px;
 }
 .mint-form {

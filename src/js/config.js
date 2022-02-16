@@ -6,7 +6,8 @@ const config = {
   },
   graph: {
       url: process.env.VUE_APP_GRAPH_URL
-  }
+  },
+  provider: process.env.VUE_APP_PROVIDER
 };
 
 export default config;
