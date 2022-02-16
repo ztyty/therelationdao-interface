@@ -1,14 +1,18 @@
 import config from "./config";
-import { create } from "ipfs-http-client";
 import axios from "axios";
+import { create } from "ipfs-http-client";
 
-const client = create(config.ipfs.url);
+const ipfs = create(config.ipfs.url);
+
+const instance = axios.create({
+  baseURL: config.ipfs.url,
+});
 
 export default {
-  add(file) {
-    return client.add(file);
+  async add(file) {
+    return ipfs.add(file);
   },
   cat(hash) {
-    return axios.get(config.ipfs.url + "/api/v0/cat?arg=" + hash);
+    return instance.get("/api/v0/cat?arg=" + hash);
   },
 };
