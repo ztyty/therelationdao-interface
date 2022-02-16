@@ -184,7 +184,7 @@ export default {
         return;
       }
       if (this.loginId === null) {
-        this.$message.error("Please choose one RELATION NFT");
+        this.$message.error("Please choose one Active RELATION");
         return;
       }
 
@@ -210,7 +210,7 @@ export default {
         return;
       }
       if (this.loginId === null) {
-        this.$message.error("Please choose one RELATION NFT");
+        this.$message.error("Please choose one Active RELATION");
         return;
       }
       this.loading = true;
@@ -348,6 +348,12 @@ export default {
         }
       }
     }
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .profile-block {
+    width: 100%;
   }
 }
 </style>

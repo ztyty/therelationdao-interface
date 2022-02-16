@@ -6,7 +6,10 @@
       </div>
 
       <div class="title">
-        <span v-if="loginId !== null">RELATION#{{ loginId }}</span>
+        <span>My Relations</span>
+      </div>
+      <div class="alert-info">
+        There is a 1~3 minute delay in data updates.
       </div>
       <div class="relations-list">
         <template v-if="relations.length === 0">
@@ -62,8 +65,12 @@ export default {
     },
     switchLoginId(id) {
       this.submitLoginId(id);
-      this.$message.success("switched to RELATION#" + id);
       this.close();
+      if (this.$route.name !== "AccountDetail") {
+        this.$router.push({ name: "AccountDetail", params: { id: id } });
+      } else {
+        this.$message.success("Active #" + id);
+      }
     },
   },
   apollo: {
@@ -136,12 +143,20 @@ export default {
 
   .title {
     width: 100%;
-    height: 50px;
+    height: auto;
     float: left;
     color: #000;
-    margin-bottom: 15px;
     font-size: 24px;
     font-weight: 800;
+  }
+
+  .alert-info {
+    width: 100%;
+    height: auto;
+    float: left;
+    font-size: 12px;
+    color: orange;
+    margin-bottom: 15px;
   }
 
   .relations-list {
@@ -219,6 +234,12 @@ export default {
         margin-bottom: 0;
       }
     }
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .right-block {
+    width: 100%;
   }
 }
 </style>

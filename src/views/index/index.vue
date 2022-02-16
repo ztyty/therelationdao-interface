@@ -188,6 +188,7 @@ export default {
   padding-top: 30px;
   padding-bottom: 100px;
 }
+
 .mint-form {
   display: inline-block;
   width: 500px;
@@ -279,6 +280,12 @@ export default {
         color: rgba(white, 0.8);
       }
     }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .mint-form {
+    width: 100%;
   }
 }
 </style>

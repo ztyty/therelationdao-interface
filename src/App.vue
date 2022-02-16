@@ -7,7 +7,7 @@
         @click="switchShowAccounts(!showAccounts)"
         v-if="isLogin"
       >
-        {{ loginAddress }}
+        My Relations
       </a>
       <a
         v-else
@@ -128,7 +128,16 @@ export default {
 }
 
 body {
+  width: 100%;
+  height: auto;
+  float: left;
   background-color: #000;
+}
+
+#app {
+  width: 100%;
+  height: auto;
+  float: left;
 }
 
 .connect-wallet-box {
@@ -181,12 +190,9 @@ body {
   }
 }
 
-// @media screen and (max-width: 400px) {
-//   #app {
-//     width: 100%;
-//     height: auto;
-//     float: left;
-//     margin: 0;
-//   }
-// }
+@media screen and (max-width: 500px) {
+  .connect-wallet-box {
+      padding-right: 15px;
+  }
+}
 </style>
