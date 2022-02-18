@@ -26,9 +26,52 @@
       />
     </div>
     <div class="desc">
-      <p>Web3 Social Relationships.</p>
+      <p>On-chain Social Relationships.</p>
     </div>
     <router-view />
+
+    <div class="faq-box">
+      <div class="faq">
+        <div class="faq-item">
+          <div class="title">What is TheRelationDAO?</div>
+          <div class="content">
+            TheRelationDAO is committed to building an on-chain transparent
+            social network relationship.
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="title">
+            Background
+          </div>
+          <div class="content">
+            Inspired by TheOpenDAO, I began to realize the value of user data on
+            the chain. As one of the essential activities of our daily life,
+            social networking, its social network relationships are also very
+            valuable! TheRelationDAO is committed to building an on-chain
+            transparent social network relationship. Everyone can make further
+            development on the basis of the social network relationship provided
+            by TheRelationDAO to give full play to the value of the social
+            network relationship on the chain, allowing Web3 users to enjoy
+            social networking and gain additional economic benefits!
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="title">Implementation</div>
+          <div class="content">
+            Every user can mint his own NFT in TheRelationDAO. The NFT includes
+            basic information such as name, avatar, introduction, and Twitter.
+            This basic information is stored on the IPFS network. After
+            obtaining their own NFTs, users can use their own NFTs to follow
+            other people's NFTs, and others can use their own NFTs to follow
+            your NFTs, thus forming a huge on-chain social network.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact">
+      <a href="https://twitter.com/TheRelationDAO">Twitter</a>
+    </div>
 
     <accounts v-if="showAccounts"></accounts>
   </div>
@@ -190,9 +233,77 @@ body {
   }
 }
 
+.faq-box {
+  width: 100%;
+  height: auto;
+  float: left;
+  text-align: center;
+  padding-top: 100px;
+
+  .faq {
+    display: inline-block;
+    width: 500px;
+    height: auto;
+
+    .faq-item {
+      width: 100%;
+      height: auto;
+      float: left;
+      margin-bottom: 15px;
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      .title {
+        width: 100%;
+        height: auto;
+        float: left;
+        text-align: left;
+        font-size: 20px;
+        font-weight: 700;
+        color: white;
+        margin-bottom: 15px;
+      }
+
+      .content {
+        width: 100%;
+        height: auto;
+        float: left;
+        text-align: left;
+        font-size: 14px;
+        color: rgba(white, 0.8);
+      }
+    }
+  }
+}
+
+.contact {
+  width: 100%;
+  height: auto;
+  float: left;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  text-align: center;
+
+  a {
+    color: rgba(white, 0.5);
+    text-decoration: underline;
+    font-size: 15px;
+    font-weight: 800;
+
+    &:hover {
+      color: white;
+    }
+  }
+}
+
 @media screen and (max-width: 500px) {
   .connect-wallet-box {
-      padding-right: 15px;
+    padding-right: 15px;
+  }
+
+  .faq-box {
+    width: 100%;
   }
 }
 </style>

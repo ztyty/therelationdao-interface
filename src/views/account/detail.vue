@@ -242,10 +242,9 @@ export default {
 
   .profile-block {
     display: inline-block;
-    width: 400px;
+    width: 500px;
     height: auto;
-    padding-top: 30px;
-    padding-bottom: 100px;
+    padding-top: 100px;
 
     .info {
       width: 100%;
@@ -351,7 +350,7 @@ export default {
   }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 500px) {
   .profile-block {
     width: 100%;
   }

@@ -185,8 +185,7 @@ export default {
   height: auto;
   float: left;
   text-align: center;
-  padding-top: 30px;
-  padding-bottom: 100px;
+  padding-top: 100px;
 }
 
 .mint-form {
