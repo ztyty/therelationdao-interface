@@ -70,7 +70,11 @@
     </div>
 
     <div class="contact">
-      <a href="https://twitter.com/TheRelationDAO">Twitter</a>
+      <a href="https://twitter.com/TheRelationDAO">Twitter</a> |
+      <a
+        href="https://etherscan.io/address/0x72097604950e50b35825f69e2b94f0a5639db0d0"
+        >Contract</a
+      >
     </div>
 
     <accounts v-if="showAccounts"></accounts>
@@ -284,6 +288,7 @@ body {
   padding-top: 50px;
   padding-bottom: 50px;
   text-align: center;
+  color: rgba(white, 0.1);
 
   a {
     color: rgba(white, 0.5);
